@@ -12,7 +12,7 @@
 
   Docker 镜像（Image）就是一个只读的模板。镜像可以用来创建 Docker 容器，一个镜像可以创建很多容器。
 
-  ![image-20200213203445604](C:\Users\温文星\AppData\Roaming\Typora\typora-user-images\image-20200213203445604.png)
+  ![image-20200213203445604](D:\Data\31.Docker\Docker 学习笔记\images\image-20200213203445604.png)
 
 - 容器（container）
 
@@ -47,7 +47,7 @@
 
 ### Docker的架构图
 
-![image-20200213203036498](C:\Users\温文星\AppData\Roaming\Typora\typora-user-images\image-20200213203036498.png)
+![image-20200213203036498](D:\Data\31.Docker\Docker 学习笔记\images\image-20200213203036498.png)
 
 ### CentOS7安装Docker
 
@@ -61,7 +61,7 @@
 
    - CentOS7能上外网
 
-     ![image-20200213204220072](C:\Users\温文星\AppData\Roaming\Typora\typora-user-images\image-20200213204220072.png)
+     ![image-20200213204220072](D:\Data\31.Docker\Docker 学习笔记\images\image-20200213204220072.png)
 
    - yum -y install gcc
 
@@ -117,11 +117,11 @@ e095461be1e55eb8c7c2e28017a9fcee082373584754bb4b8b12cd3f079f0a49
 
 这时候查看docker 正在运行的容器：
 
-![image-20200213185123346](C:\Users\温文星\AppData\Roaming\Typora\typora-user-images\image-20200213185123346.png)
+![image-20200213185123346](D:\Data\31.Docker\Docker 学习笔记\images\image-20200213185123346.png)
 
  这时候已经在运行了，接下来，我们用浏览器访问， 
 
-![image-20200213185050695](C:\Users\温文星\AppData\Roaming\Typora\typora-user-images\image-20200213185050695.png)
+![image-20200213185050695](D:\Data\31.Docker\Docker 学习笔记\images\image-20200213185050695.png)
 
   这时候，很奇怪哦，404错误？我这里检查完服务器端口8080已经开放了，接下来，我们进入tomcat的目录： 
 
@@ -170,5 +170,5 @@ root@e095461be1e5:/usr/local/tomcat# mv webapps.dist webapps
 
  改完之后，我们再重新访问： 
 
-![image-20200213185648501](C:\Users\温文星\AppData\Roaming\Typora\typora-user-images\image-20200213185648501.png)
+![image-20200213185648501](D:\Data\31.Docker\Docker 学习笔记\images\image-20200213185648501.png)
 

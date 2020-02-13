@@ -1,10 +1,96 @@
 # Docker入门 
 
+## Docker简介
 
+ Docker是一个用于开发，交付和运行应用程序的开放平台。Docker使您能够将应用程序与基础架构分开，从而可以快速交付软件。借助Docker，您可以以与管理应用程序相同的方式来管理基础架构。通过利用Docker的快速交付，测试和部署代码的方法，您可以大大减少编写代码和在生产环境中运行代码之间的延迟。 
 
-## 安装Tomcat以及报404解决方案
+## Docker安装
 
-记录简单的在Docker 上安装Tomcat
+### Docker的基本组成
+
+- 镜像（image）
+
+  Docker 镜像（Image）就是一个只读的模板。镜像可以用来创建 Docker 容器，一个镜像可以创建很多容器。
+
+  ![image-20200213203445604](C:\Users\温文星\AppData\Roaming\Typora\typora-user-images\image-20200213203445604.png)
+
+- 容器（container）
+
+  Docker 利用容器（Container）独立运行的一个或一组应用。容器是用镜像创建的运行实例。
+
+  它可以被启动、开始、停止、删除。每个容器都是相互隔离的、保证安全的平台。
+
+  可以把容器看做是一个简易版的 Linux 环境（包括root用户权限、进程空间、用户空间和网络空间等）和运行在其中的应用程序。
+
+  容器的定义和镜像几乎一模一样，也是一堆层的统一视角，唯一区别在于容器的最上面那一层是可读可写的。
+
+- 仓库（repository）
+
+  仓库（Repository）是集中存放镜像文件的场所。
+  仓库(Repository)和仓库注册服务器（Registry）是有区别的。仓库注册服务器上往往存放着多个仓库，每个仓库中又包含了多个镜像，每个镜像有不同的标签（tag）。
+
+  仓库分为公开仓库（Public）和私有仓库（Private）两种形式。
+  最大的公开仓库是 Docker Hub(https://hub.docker.com/)，
+  存放了数量庞大的镜像供用户下载。国内的公开仓库包括阿里云 、网易云 等
+
+- 小总结
+
+  需要正确的理解仓储/镜像/容器这几个概念:
+
+   Docker 本身是一个容器运行载体或称之为管理引擎。我们把应用程序和配置依赖打包好形成一个可交付的运行环境，这个打包好的运行环境就似乎 image镜像文件。只有通过这个镜像文件才能生成 Docker 容器。image 文件可以看作是容器的模板。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例。
+
+  *  image 文件生成的容器实例，本身也是一个文件，称为镜像文件。
+
+  *  一个容器运行一种服务，当我们需要的时候，就可以通过docker客户端创建一个对应的运行实例，也就是我们的容器
+
+  * 至于仓储，就是放了一堆镜像的地方，我们可以把镜像发布到仓储中，需要的时候从仓储中拉下来就可以了。
+
+### Docker的架构图
+
+![image-20200213203036498](C:\Users\温文星\AppData\Roaming\Typora\typora-user-images\image-20200213203036498.png)
+
+### CentOS7安装Docker
+
+安装步骤:
+
+1. 官网中文安装参考手册:[](https://docs.docker-cn.com/engine/installation/linux/docker-ce/centos/#prerequisites)
+
+2. 确定你是CentOS7及以上版本  cat /etc/redhat-release
+
+3. yum安装gcc相关
+
+   - CentOS7能上外网
+
+     ![image-20200213204220072](C:\Users\温文星\AppData\Roaming\Typora\typora-user-images\image-20200213204220072.png)
+
+   - yum -y install gcc
+
+   - yum -y install gcc-c++
+
+4. 卸载旧版本  yum -y remove docker docker-common docker-selinux docker-engine
+
+5. 安装需要的软件包  yum install -y yum-utils device-mapper-persistent-data lvm2
+
+6. 设置stable镜像仓库  yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
+7. 更新yum软件包索引  yum makecache fast
+
+8. 安装DOCKER CE  yum -y install docker-ce
+
+9. 启动docker  systemctl start docker
+
+10. 测试
+
+    - docker version
+    - docker run hello-world
+
+11. 卸载
+
+    - systemctl stop docker 
+    - yum -y remove docker-ce
+    - rm -rf /var/lib/docker
+
+## 记录简单的在Docker 上安装Tomcat
 
 首先我是在云服务器上（Centos系统）安装的Docker，我们需要在https://hub.docker.com/ 上查找Tomcat镜像
 

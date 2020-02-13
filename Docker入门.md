@@ -90,6 +90,34 @@
     - yum -y remove docker-ce
     - rm -rf /var/lib/docker
 
+### 永远的HelloWorld
+
+1. 阿里云镜像加速（地址：[](https://dev.aliyun.com/search.html)）
+
+2. 获得加速器地址连接
+
+   ![image-20200213215255463](./images/image-20200213215255463.png)
+
+3. 配置本机Docker运行镜像加速器（CentOS7版本）
+
+   - mkdir -p /etc/docker
+
+   - vim  /etc/docker/daemon.json
+
+     #网易云
+     {"registry-mirrors": ["http://hub-mirror.c.163.com"] }
+
+      
+
+      #阿里云
+     {
+       "registry-mirrors": ["https://｛自已的编码｝.mirror.aliyuncs.com"]
+     }
+
+   - systemctl daemon-reload
+
+   - systemctl restart docker
+
 ## 记录简单的在Docker 上安装Tomcat
 
 首先我是在云服务器上（Centos系统）安装的Docker，我们需要在https://hub.docker.com/ 上查找Tomcat镜像

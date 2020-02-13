@@ -118,6 +118,16 @@
 
    - systemctl restart docker
 
+## Docker常用命令
+
+#### 帮助命令
+
+- docker version
+- docker info
+- docker help
+
+
+
 ## 记录简单的在Docker 上安装Tomcat
 
 首先我是在云服务器上（Centos系统）安装的Docker，我们需要在https://hub.docker.com/ 上查找Tomcat镜像

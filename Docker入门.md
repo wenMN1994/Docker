@@ -126,7 +126,56 @@
 - docker info
 - docker help
 
+#### 镜像命令
 
+1. docker images
+
+   - 列出本地主机上的镜像
+
+     ![image-20200214213034699](./images/image-20200214213034699.png)
+
+     各个选项说明:
+     REPOSITORY：表示镜像的仓库源
+     TAG：镜像的标签
+     IMAGE ID：镜像ID
+     CREATED：镜像创建时间
+     SIZE：镜像大小
+      同一仓库源可以有多个 TAG，代表这个仓库源的不同个版本，我们使用 REPOSITORY:TAG 来定义不同的镜像。
+     如果你不指定一个镜像的版本标签，例如你只使用 ubuntu，docker 将默认使用 ubuntu:latest 镜像
+
+   - OPTIONS说明：
+
+     - -a :列出本地所有的镜像（含中间映像层）
+     - -q :只显示镜像ID。
+     - --digests :显示镜像的摘要信息
+     - --no-trunc :显示完整的镜像信息
+
+2. docker search 某个XXX镜像名字（搜索镜像）
+
+   - docker search [OPTIONS] 镜像名字 
+
+     ```
+     [root@dragon /]# docker search tomcat
+     ```
+
+   - OPTIONS说明：
+     - --no-trunc : 显示完整的镜像描述
+     - -s : 列出收藏数不小于指定值的镜像。
+     - --automated : 只列出 automated build类型的镜像；
+
+3. docker pull 某个XXX镜像名字（下载镜像）
+
+   - docker pull 镜像名字[:TAG]
+
+     ```
+     [root@dragon /]# docker pull tomcat
+     ```
+
+4. docker rmi 某个XXX镜像名字ID
+
+   - 删除单个——docker rmi  -f 镜像ID
+   - 删除多个——docker rmi -f 镜像名1:TAG 镜像名2:TAG 
+   - 删除全部——docker rmi -f $(docker images -qa)
 
 ## 记录简单的在Docker 上安装Tomcat
 
